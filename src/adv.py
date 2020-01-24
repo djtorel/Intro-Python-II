@@ -129,7 +129,7 @@ def game_loop():
 
         while not input_results['proceed'] and not input_results['quit']:
             message = "\nThat was an invalid option\n"
-            player_input = input(f"{message}{input_option_string}")
+            player_input = str.lower(f"{message}{input_option_string}")
             input_results = process_input(player_input, player, options)
 
         if input_results['quit']:
