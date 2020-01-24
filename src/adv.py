@@ -108,6 +108,10 @@ def clear_screen():
     _ = os.system('cls') if sys.platform.startswith('win32') else os.system('clear')
 
 
+def get_input(message):
+    return str.lower(input(message))
+
+
 def game_loop():
     clear_screen()
     player_name = input("What is your name, brave hero?\n")
@@ -123,12 +127,12 @@ def game_loop():
             f"{player.current_room.description}\n\n"
         )
 
-        player_input = str.lower(input(input_option_string))
+        player_input = get_input(input_option_string)
         input_results = process_input(player_input, player, options)
 
         while not input_results['proceed'] and not input_results['quit']:
             message = "\nThat was an invalid option\n"
-            player_input = str.lower(input(f"{message}{input_option_string}"))
+            player_input = get_input(f"{message}{input_option_string}")
             input_results = process_input(player_input, player, options)
 
         if input_results['quit']:
