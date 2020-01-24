@@ -113,7 +113,6 @@ def game_loop():
     player_name = input("What is your name, brave hero?\n")
     player = Player(player_name, room['outside'])
 
-    input_results = {'is_invalid': False}
     while True:
         clear_screen()
 
