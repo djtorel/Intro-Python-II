@@ -65,7 +65,7 @@ def get_new_player_room(player_input, player):
         return player.current_room.w_to
 
 
-def process_input(player_input, player, options):
+def get_input_results(player_input, player, options):
     if player_input == 'q':
         return {'proceed': False, 'quit': True}
     elif player_input in options:
@@ -127,13 +127,11 @@ def game_loop():
             f"{player.current_room.description}\n\n"
         )
 
-        player_input = get_input(input_option_string)
-        input_results = process_input(player_input, player, options)
+        input_results = get_input_results(get_input(input_option_string), player, options)
 
         while not input_results['proceed'] and not input_results['quit']:
             message = "\nThat was an invalid option\n"
-            player_input = get_input(f"{message}{input_option_string}")
-            input_results = process_input(player_input, player, options)
+            input_results = get_input_results(get_input(f"{message}{input_option_string}"), player, options)
 
         if input_results['quit']:
             clear_screen()
